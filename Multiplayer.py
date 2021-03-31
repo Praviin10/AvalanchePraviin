@@ -1,0 +1,26 @@
+import pygame
+from AvalanchePraviin import gameboard, screen, shape, nextshape, myfont, WHITE, BLACK
+
+def drawMultiplayer():
+    screen.fill(BLACK)
+    shape.draw(screen)
+    nextshape.drawnextshape(screen)
+    gameboard.draw(screen)
+    shape.drawGhostBlock(screen)
+    linetext = myfont.render("Lines: " + str(gameboard.numlines), 1, WHITE)
+    screen.blit(linetext, (400, 400))
+    nextshapetext = myfont.render("Next: ", 1, WHITE)
+    screen.blit(nextshapetext, (400, 50))
+    pygame.draw.rect(screen, WHITE, [400, 100, 6 * shape.blocklist[0].size, 6 * shape.blocklist[0].size], 1)
+    poweruptext = myfont.render("Power Ups: ", 1, WHITE)
+    screen.blit(poweruptext, (50, 525))
+    slowtimeimage = pygame.image.load("clock.png")
+    screen.blit(slowtimeimage, (250, 515))
+    numswapshapetext = myfont.render(" x" + str(gameboard.numswapshape), 1, WHITE)
+    screen.blit(numswapshapetext, (435, 525))
+    swapshapeimage = pygame.image.load("swap.png")
+    screen.blit(swapshapeimage, (375, 515))
+    pygame.draw.rect(screen, WHITE, [575, 100, 200, 400], 1)
+    playernametext = myfont.render("Player: " + name, 1, WHITE)
+    screen.blit(playernametext, (515, 525))
+    pygame.display.flip()
